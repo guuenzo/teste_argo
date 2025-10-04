@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  namespace: worldskills # << Importante: no mesmo namespace do serviço
+  annotations:
+    # Estas anotações são ESSENCIAIS para o ALB Controller
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  rules:
+  - http:
+      paths:
+      - path: / # Roteia todo o tráfego que chegar no ALB
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-service # Para qual serviço o tráfego vai
+            port:
+              number: 80
