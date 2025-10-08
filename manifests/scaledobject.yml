@@ -5,11 +5,10 @@ metadata:
   namespace: worldskills
 spec:
   scaleTargetRef:
-    name: nginx-deploy   # Nome do deployment alvo (valor Helm)
+    name: nginx-deploy
   minReplicaCount: 2
-  maxReplicaCount: 5                      # Sempre defina os limites
+  maxReplicaCount: 5
   triggers:
     - type: cpu
       metadata:
-        type: Utilization
-        value: "50"                       # Escala se uso da CPU > 50%
+        value: "50"
