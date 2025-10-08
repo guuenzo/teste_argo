@@ -9,12 +9,13 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
 spec:
   rules:
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: nginx-svc # Your ClusterIP Service name
-            port:
-              number: 80 # Port of your ClusterIP Service
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-svc
+                port:
+                  number: 80
+
