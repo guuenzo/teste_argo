@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: teste-deploy
+  name: teste-deploy
+  namespace: nextgenz
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teste-deploy
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: teste-deploy
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
